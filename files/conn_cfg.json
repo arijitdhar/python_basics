@@ -1,0 +1,64 @@
+{
+    "database":{ 
+        "version":"Dev",
+        "host":"10.248.243.73",
+        "dbname":"dev",
+        "port":"5439",
+        "user":"redshift_data_importer",
+        "password":"2FMQvGcJg"
+    } ,
+    "iam_role":"arn:aws:iam::497531642140:role/knowme-qa-redshift",
+
+    "cfg_tbl":"config table",
+
+    "local_notify_importer_file_path": "/notify_importer",
+    "notify_importer_file_name": "notify_importer.txt",
+    "ddl_export_path" : "/DDL/table/",
+    "view_ddl_export_path": "/DDL/view/",
+    "data_file_download_path" : "/Data/",
+    "unload_sql_file_path" : "/UNLOAD_SQL/",
+
+    "dev_aws_sftp_ddl_path" : "/levi-cdh-redshift-data-import/DDL/table/",
+    "dev_aws_sftp_view_ddl_path" : "/levi-cdh-redshift-data-import/DDL/view/",
+    "dev_aws_sftp_data_path" : "/levi-cdh-redshift-data-import/Data/",
+    "dev_aws_sftp_notification_path" : "/levi-cdh-redshift-data-import/Notify/",
+    "dev_aws_sftp_host" : "cdh-sftp-dev.levi-site.com",
+    "dev_aws_sftp_username" : "redshift_data_exporter",
+    "dev_aws_sftp_private_key" : "/redshift_data_exporter",
+
+    "prod_s3_bucket" : "levi-cdh-redshift-data-export",
+    "prod_s3_prefix" : "Export/",
+
+    "pii_table_schema": "data_masker",
+    "pii_table_name": "pii_columns",
+    "pii_udf": "get_masked_column_data",
+    "date_time_formatter": "%Y_%m_%d_%H_%M_%S",
+
+    "create_snow_ticket_topic_arn": "arn:aws:sns:us-west-2:497531642140:auditlogdpsns",
+
+    "schemas": [],
+    "tables": [
+        {
+            "cdhsfl.cdh_save_for_later": {
+                "select_columns": " * ",
+                "where_clause": "",
+                "unload_record_limit": 2
+            }
+        },
+        {
+            "cdhdb_test.catalogs_dim": {
+                "unload_record_limit": " "
+            }
+        }
+    ],
+    "views":[],
+
+    "exporter_controller_s3_filepath": "Program/exporter_controller.txt",
+
+    "thread_pool_config": {
+        "max_processes": 2
+    },
+
+    "exporter_log_table": "data_masker.redshift_data_exporter_log"
+
+}
